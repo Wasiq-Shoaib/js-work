@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+}
+
+.card {
+    width: 250px;
+    border: 2px solid grey;
+    background-color: rgb(29, 36, 34);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    margin-left: 50px;
+    margin-top: 20px;
+    border-style: none;
+    padding: 10px;
+    color: rgb(228, 41, 41);
+
+}
+
+.card img {
+    width: 250px;
+    height: 200px;
+}
+
+.card-para{
+    color: white;
+}
+
+.btn {
+    background-color: rgb(231, 240, 243);
+    color: black;
+    border-radius: 15px;
+    border: 1px solid;
+    cursor: pointer;
+    padding: 5px;
+    margin-top: 4px;
+    float: right;
+
+}
+
+.btn:hover {
+    background-color: rgb(2, 2, 19);
+    color: white;
+}
