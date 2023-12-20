@@ -3,21 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Assignment 3</title>
   </head>
   <body>
-    <div class="container">
-      <!-- <div class="card">
-        <img src="pic1.png" alt="" />
-        <h2 class="heading">This is a card</h2>
-        <p class="card-para">
-          Lorem ips eaque architec sapiente, maxime quaerat quia? Nisi est animi
-          quis enim necessitatibus delectus eos id commodi ipsam?
-        </p>
-        <button class="btn">Click here</button>
-      </div> -->
-    </div>
-    <script src="main.js"></script>
+    <label for="filterOption">Select Filter:</label>
+    <select id="filterOption">
+      <option value="brand">Brand</option>
+      <option value="model">samsung</option>
+      <option value="model">iphone</option>
+      <option value="model">Vivo</option>
+    </select>
+
+    <label for="filterValue">Enter Value:</label>
+    <input type="text" id="filterValue" />
+
+    <button onclick="searchMobilePhones()">Search</button>
+
+    <ul id="mobileList">
+      <li>
+        Brand: Samsung, Model: Galaxy A30, ram:8 gb,rom: 128 gb, camera: 40 px
+      </li>
+      <li>
+        Brand: Samsung, Model: Galaxy A20, ram:4 gb , rom: 128 gb, camera: 40 px
+      </li>
+      <li>
+        Brand: Samsung, Model: Galaxy A10, ram: 4 gb, rom: 128 gb, camera: 40 px
+      </li>
+      <li>Brand: Vivo, Model: Y20,ram: 2gb,rom:32, camera: 40 px</li>
+      <li>Brand: Vivo, Model: Y11,ram:3 gb,rom:32 gb, camera: 40 px</li>
+      <li>Brand: Vivo, Model: Y15,ram:4 gb,rom:64 gb, camera: 40 px</li>
+      <li>
+        Brand: Apple, Model: iPhone 12,ram: 8 gb,rom:128 gb, camera: 40 px
+      </li>
+      <li>
+        Brand: Apple, Model: iPhone 13,ram: 8 gb,rom:128 gb, camera: 40 px
+      </li>
+      <li>Brand: Apple, Model: iPhone X,ram: 8 gb,rom:128 gb, camera: 40 px</li>
+      <li>
+        Brand: Motorola, Model: Motorola123,ram:2 gb,rom:32 gb, camera: 2 px
+      </li>
+    </ul>
+    <script src="app.js"></script>
   </body>
 </html>
