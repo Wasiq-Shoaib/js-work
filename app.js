@@ -1,111 +1,65 @@
-let arr = [
-    {
-        brand: "Samsung",
-        model: "SamsungA30",
-        price: "40000",
-        camera: "40px",
-        ram: "8gb",
-        rom : "128gb",
-        
-    },
-    {
-        brand: "Samsung",
-        model: "SamsungA10",
-        price: "40000",
-        camera: "40px",
-        ram: "4gb",
-        rom : "128gb",
-        
-    },
-    {
-        brand: "Samsung",
-        model: "SamsungA20",
-        price: "40000",
-        camera: "40px",
-        ram: "4gb",
-        rom : "128gb",
-        
-    },
-    {
-        brand: "Vivo",
-        model: "VivoY20",
-        price: "20000",
-        camera: "40px",
-        ram: "2gb",
-        rom : "32gb",
-        
-    },
-    {
-        brand: "Vivo",
-        model: "VivoY11",
-        price: "20000",
-        camera: "40px",
-        ram: "3gb",
-        rom : "32gb",
-        
-    },
-    {
-        brand: "Vivo",
-        model: "VivoY15",
-        price: "30000",
-        camera: "40px",
-        ram: "4gb",
-        rom : "64gb",
-        
-    },
-    {
-        brand: "Motorola",
-        model: "Motorola123",
-        price: "5000",
-        camera: "2px",
-        ram: "2gb",
-        rom : "32gb",
-        
-    },
-    {
-        brand: "Iphone",
-        model: "Iphone12",
-        price: "300000",
-        camera: "40px",
-        ram: "8gb",
-        rom : "128gb"
-    }]
+let userscore = 0;
+let compscore = 0;
 
-    window.onload = function () {
-        updateMobileList(arr);
-      };
-      
-      function updateMobileList(data) {
-        var mobileList = document.getElementById("mobileList");
-        mobileList.innerHTML = "";
-      
-        data.forEach(function (mobile) {
-          var listItem = document.createElement("li");
-          listItem.textContent = `Brand: ${mobile.brand}, Model: ${mobile.model}, Price: $${mobile.price}, Camera: ${mobile.camera}, RAM: ${mobile.ram}, ROM: ${mobile.rom}`;
-          mobileList.appendChild(listItem);
-        });
-      }
-      
-      function searchMobilePhones() {
-        var filterOption = document.getElementById("filterOption").value;
-        var filterValue = document.getElementById("filterValue").value.toLowerCase();
-      
-        if (filterOption === "price") {
-          filterValue = parseFloat(filterValue);
-        }
-      
-        var filteredData = arr.filter(function (mobile) {
-          // Check if the filter value matches the selected filter option
-          if (filterOption === "price") {
-            return parseFloat(mobile[filterOption]) === filterValue;
-          } else {
-            return mobile[filterOption].toLowerCase().includes(filterValue);
-          }
-        });
-      
-        updateMobileList(filteredData);
-      }
-      
-      
-      
-      
+const choices = document.querySelectorAll(".choice");
+const mxg = document.querySelector("#mxg");
+const user = document.querySelector("#user-score");
+const comp = document.querySelector("#computer-score");
+
+const comchoice = (userchoice) => {
+  const gencomp = ["rock", "paper", "scissor"];
+  const genno = Math.floor(Math.random() * 3);
+  return gencomp[genno];
+};
+
+const drawgame = () => {
+  console.log("game draw");
+  mxg.innerText = "Game was Draw";
+  mxg.style.backgroundColor = "blue";
+};
+
+const showwinner = (userwin, compchoice, userchoice) => {
+  if (userwin) {
+    userscore++;
+    user.innerHTML = userscore;
+    console.log("you win");
+    mxg.innerText = `you win. your choice beats computer choice`;
+    mxg.style.backgroundColor = "green";
+  } else {
+    compscore++;
+    comp.innerText = compscore;
+    console.log("you lose.");
+    mxg.innerText = `you lose! computer choice beats your choice}`;
+    mxg.style.backgroundColor = "red";
+  }
+};
+
+const playgame = (userchoice) => {
+  console.log("user choice =", userchoice);
+  const compchoice = comchoice();
+  console.log("comp choice = ", compchoice);
+
+  if (userchoice === compchoice) {
+    drawgame();
+  } else {
+    let userwin = true;
+
+    if (userchoice === "scissor") {
+      userwin = compchoice === "rock" ? false : true;
+    }
+    if (userchoice === "rock") {
+      userwin = compchoice === "paper" ? false : true;
+    } else {
+      compchoice === "rock" ? true : false;
+    }
+    showwinner(userwin, userchoice, compchoice);
+  }
+};
+
+choices.forEach((choice) => {
+  choice.addEventListener("click", () => {
+    const userchoice = choice.getAttribute("id");
+    // console.log("was  clicked", userchoice);
+    playgame(userchoice);
+  });
+});
